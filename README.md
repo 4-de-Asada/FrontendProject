@@ -2,5 +2,6 @@
 ### División de Trabajo
 > Trabajo realizado en Next.js
 
-***Lista de Trabajo**
+**Lista de Trabajo**
+
 [] Carlos: Header y el Hero 
