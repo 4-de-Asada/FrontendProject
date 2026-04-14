@@ -4,4 +4,8 @@
 
 **Lista de Trabajo**
 
-[] Carlos: Header y el Hero 
+[ ] Carlos: Plantilla de las Cards
+[ ] Samuel: Header y el Hero
+[ ] Antonio: Footer
+[ ] Rafael: Hero del Marketplace
+[ ] Saul: Body Marketplace
