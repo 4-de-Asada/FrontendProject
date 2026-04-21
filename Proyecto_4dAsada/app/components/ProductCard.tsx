@@ -4,21 +4,18 @@ import Image from "next/image";
 
 export interface ProductCardProps {
   imageSrc: string;
-  
   imageAlt?: string;
-  
   title: string;
- 
   price: number;
- 
   description: string;
-  
   sellerName: string;
-  
+  sellerRating?: number;
+  sellerReviewCount?: number;
   rating: number;
- 
   category: string;
-  
+  publishedAt?: string;
+  whatsappNumber?: string;
+  reviewCount?: number;
   onClick?: () => void;
 }
 

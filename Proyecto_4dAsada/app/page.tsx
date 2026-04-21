@@ -1,21 +1,26 @@
 import ProductGrid from "./components/ProductGrid";
 import { ProductCardProps } from "./components/ProductCard";
 
-// ─── Sample data (replace with real API / props later) ───────────────────────
+// PRUEBA
 const products: ProductCardProps[] = [
   {
     imageSrc: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400&q=80",
     imageAlt: "iPhone 12 Pro",
-    title: "iPhone 12 Pro",
+    title: "iPhone 12 Pro 128GB",
     price: 8500,
-    description: "iPhone en excelente estado, batería al 89%, incluye cargador y caja original.",
+    description: "iPhone en excelente estado, batería al 89%, incluye cargador original y funda. Sin detalles estéticos.",
     sellerName: "Carlos Mendoza",
+    sellerRating: 3.5,
+    sellerReviewCount: 23,
     rating: 4.8,
     category: "Electrónica",
-  }
+    publishedAt: "2024-01-14",
+    whatsappNumber: "521234567890",
+    reviewCount: 2,
+  },
 ];
 
-// ─── Page (Server Component) ──────────────────────────────────────────────────
+// PAGINA
 
 export default function Home() {
   return (
