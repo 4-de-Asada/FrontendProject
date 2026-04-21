@@ -1,10 +1,11 @@
+// Barra de navegación principal: logo, enlaces de sección, botón de publicar y avatar de usuario.
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// ─── Nav links ────────────────────────────────────────────────────────────────
+// ─── Enlaces de navegación ──────────────────────────────────────────────────
 
 const NAV_LINKS = [
   { label: "Inicio",       href: "/inicio" },
@@ -13,7 +14,7 @@ const NAV_LINKS = [
   { label: "Servicios",   href: "/servicios" },
 ];
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// ─── Componente ─────────────────────────────────────────────────────────────
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -40,7 +41,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* ── Center nav links ──────────────────────────────────────────── */}
+        {/* ── Enlaces centrados ───────────────────────────────────────────── */}
         <ul className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map(({ label, href }) => {
             const active = isActive(href);
@@ -62,9 +63,9 @@ export default function Navbar() {
           })}
         </ul>
 
-        {/* ── Right actions ─────────────────────────────────────────────── */}
+        {/* ── Acciones a la derecha ──────────────────────────────────────── */}
         <div className="flex items-center gap-3">
-          {/* Publish button */}
+          {/* Botón de publicar */}
           <button className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-[#1a2b5e] transition-colors">
             <svg
               className="w-4 h-4"
@@ -80,7 +81,7 @@ export default function Navbar() {
             Publicar
           </button>
 
-          {/* User avatar */}
+          {/* Avatar del usuario */}
           <button
             aria-label="Mi perfil"
             className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 transition-colors"

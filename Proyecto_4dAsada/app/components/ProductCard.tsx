@@ -1,3 +1,4 @@
+// Tarjeta de producto: muestra imagen, título, precio, descripción, vendedor y categoría.
 "use client";
 
 import Image from "next/image";
@@ -23,7 +24,7 @@ function formatPrice(price: number): string {
   return `$${price.toLocaleString("es-MX")}`;
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// ─── Componente ─────────────────────────────────────────────────────────────
 
 export default function ProductCard({
   imageSrc,
@@ -48,7 +49,7 @@ export default function ProductCard({
         .filter(Boolean)
         .join(" ")}
     >
-      {/* ── Image ──────────────────────────────────────────────────────────── */}
+      {/* ── Imagen ─────────────────────────────────────────────────────────── */}
       <div className="relative w-full h-48 bg-gray-50 overflow-hidden">
         <Image
           src={imageSrc}
@@ -59,9 +60,9 @@ export default function ProductCard({
         />
       </div>
 
-      {/* ── Body ───────────────────────────────────────────────────────────── */}
+      {/* ── Cuerpo ──────────────────────────────────────────────────────────── */}
       <div className="flex flex-col gap-2 p-4 flex-1">
-        {/* Title + Price */}
+        {/* Título + Precio */}
         <div className="flex items-baseline justify-between gap-2">
           <h2
             className="font-bold text-gray-900 text-base truncate flex-1"
@@ -74,15 +75,15 @@ export default function ProductCard({
           </span>
         </div>
 
-        {/* Description */}
+        {/* Descripción */}
         <p className="text-gray-500 text-sm leading-snug line-clamp-2">
           {description}
         </p>
 
-        {/* Seller + Rating */}
+        {/* Vendedor + Calificación */}
         <div className="flex items-center justify-between mt-auto pt-2 border-t border-gray-100">
           <div className="flex items-center gap-1 text-gray-500 text-xs">
-            {/* Person icon */}
+            {/* Ícono de persona */}
             <svg
               className="w-3.5 h-3.5 shrink-0"
               viewBox="0 0 24 24"
@@ -112,7 +113,7 @@ export default function ProductCard({
           </div>
         </div>
 
-        {/* Category badge */}
+        {/* Etiqueta de categoría */}
         <div className="pt-1">
           <span className="inline-block bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">
             {category}

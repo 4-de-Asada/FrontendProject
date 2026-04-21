@@ -25,7 +25,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ── Modal pop-in animation ── */
+/* ── Animación de entrada del modal ── */
 @keyframes modal-in {
   from {
     opacity: 0;
