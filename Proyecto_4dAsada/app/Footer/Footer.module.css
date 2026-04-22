@@ -1,0 +1,153 @@
+/* Footer.css */
+
+/* Definición de variables de color para mayor facilidad */
+:root {
+  --footer-bg-color: #021a36; /* Azul marino muy oscuro */
+  --text-white: #ffffff; /* Blanco */
+  --text-gold: #e4ac2e; /* Amarillo/Dorado */
+  --font-family: 'Roboto', sans-serif; /* Usar una fuente sans-serif limpia */
+}
+
+.footer-container {
+  background-color: var(--footer-bg-color);
+  color: var(--text-white);
+  font-family: var(--font-family);
+  padding: 60px 0 20px 0; /* Padding superior para espaciado y inferior para la línea base */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-top {
+  max-width: 1200px; /* Ancho máximo para el contenido central */
+  margin: 0 auto; /* Centrar el contenido */
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr; /* Proporción de las 4 columnas */
+  gap: 30px; /* Espaciado entre columnas */
+  padding: 0 40px; /* Relleno lateral */
+  margin-bottom: 50px; /* Espacio para la sección de derechos de autor */
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.logo-icon-wrapper {
+  margin-right: 15px;
+}
+
+.logo-shape {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 3px solid var(--text-gold); /* Borde dorado */
+  border-radius: 50%; /* Circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--text-gold);
+  font-size: 20px;
+}
+
+.company-name {
+  font-size: 24px;
+  margin: 0;
+  color: var(--text-white);
+}
+
+.company-description {
+  font-size: 14px;
+  margin: 0;
+  color: var(--text-white);
+  line-height: 1.6; /* Mejorar legibilidad */
+}
+
+.column-title {
+  font-size: 18px;
+  color: var(--text-gold);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.links-list {
+  list-style: none; /* Quitar viñetas */
+  padding: 0;
+  margin: 0;
+}
+
+.links-list li {
+  margin-bottom: 12px;
+}
+
+.links-list li a,
+.address-text a,
+.email-link {
+  color: var(--text-white);
+  text-decoration: none; /* Quitar subrayado */
+  font-size: 14px;
+  line-height: 1.6;
+  transition: color 0.3s ease; /* Transición suave para el hover */
+}
+
+.links-list li a:hover,
+.address-text a:hover,
+.email-link:hover {
+  color: var(--text-gold); /* Cambiar a dorado al pasar el ratón */
+}
+
+.address-text {
+  font-size: 14px;
+  margin: 0;
+}
+
+.email-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.email-icon {
+  margin-right: 8px; /* Espacio entre el icono y el texto */
+  vertical-align: middle;
+}
+
+.email-link {
+  color: var(--text-white);
+  text-decoration: none;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between; /* Un elemento a cada extremo */
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria muy sutil */
+  padding-top: 20px; /* Padding para separar la línea del contenido */
+}
+
+.copyright-text,
+.powered-by {
+  font-size: 12px;
+  margin: 0;
+  color: var(--text-white);
+}
+
+.powered-by a {
+  color: var(--text-white);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.powered-by a:hover {
+  color: var(--text-gold);
+}
