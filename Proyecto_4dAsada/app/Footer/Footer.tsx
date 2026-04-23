@@ -25,7 +25,7 @@ export default function Footer() {
         <div className={`${styles['footer-column']} ${styles['links-column']}`}>
           <h3 className={styles['column-title']}>Enlaces Rápidos</h3>
           <ul className={styles['links-list']}>
-            <li><Link href="/">Inicio</Link></li>
+            <li><Link href="#">Inicio</Link></li>
             <li><Link href="/acatiaguis">Acatiaguis</Link></li>
             <li><Link href="/marketplace">Marketplace</Link></li>
             <li><Link href="/servicios">Servicios</Link></li>
