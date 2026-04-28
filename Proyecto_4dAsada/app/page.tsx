@@ -165,7 +165,9 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <Footer />
+      <div style={{ background: "linear-gradient(to right, #00093c, #2d0b00)" }}>
+        <Footer />
+      </div>
     </div>
   );
 }

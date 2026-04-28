@@ -1,0 +1,20 @@
+/* ─── Botón CTA Acatiaguis ───────────────────────────────────────────────── */
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 2rem;
+  background: transparent;
+  border: 2px solid #e4ac2e;
+  color: #e4ac2e;
+  border-radius: 0.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #e4ac2e;
+  color: #00093c;
+}

@@ -1,0 +1,84 @@
+/* ─── Hero Acatiaguis ─────────────────────────────────────────────────────── */
+
+.hero {
+  width: 100%;
+  background-color: #c9a227; /* Dorado/mostaza principal */
+  padding: 0 2rem;
+}
+
+.content {
+  max-width: 72rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  gap: 1rem;
+}
+
+/* ─── Texto ─────────────────────────────────────────────────────────────── */
+
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f3f1f1;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: #f3f3f2;
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* ─── Badge ──────────────────────────────────────────────────────────────── */
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(240, 239, 239, 0.18);
+  border-radius: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  min-width: 8rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.badgeDay {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.badgeLabel {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .badge {
+    align-self: flex-start;
+  }
+}

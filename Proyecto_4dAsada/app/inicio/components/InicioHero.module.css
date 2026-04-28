@@ -1,0 +1,99 @@
+/* ─── Hero de Inicio ──────────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0d1b3e;
+}
+
+/* Imagen de fondo con overlay oscuro */
+.bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?w=1400&q=60');
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px) brightness(0.35);
+  transform: scale(1.05); /* evita bordes blancos del blur */
+}
+
+/* Contenido centrado sobre el fondo */
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ─── Tipografía ──────────────────────────────────────────────────────────── */
+
+.title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.titleAccent {
+  color: #e4ac2e;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.65;
+  margin: 0 0 2rem;
+}
+
+/* ─── Botones ─────────────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  padding: 0.65rem 1.75rem;
+  background: #e4ac2e;
+  color: #0d1b3e;
+  border: 2px solid #e4ac2e;
+  border-radius: 0.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btnPrimary:hover {
+  background: #cf983e;
+  border-color: #cfce3e;
+}
+
+.btnSecondary {
+  padding: 0.65rem 1.75rem;
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 0.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
