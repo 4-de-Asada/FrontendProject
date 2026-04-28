@@ -1,11 +1,11 @@
-/* Importamos la fuente Poppins usada en el video para darle ese toque elegante */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 .footer-container {
-  /* El degradado de colores del video */
+  
   background: linear-gradient(to right, #00093c, #2d0b00);
   color: #fff;
-  /* El borde curvado característico */
+  
   border-top-left-radius: 125px;
   padding: 100px 0 30px;
   font-family: 'Poppins', sans-serif;
@@ -14,7 +14,7 @@
 }
 
 .footer-top {
-  width: 85%; /* Centrado y con márgenes a los lados como en el video */
+  width: 85%; 
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -42,7 +42,7 @@
   width: 50px;
   height: 50px;
   background-color: transparent;
-  border: 3px solid #e4ac2e; /* Mantenemos tu color dorado */
+  border: 3px solid #e4ac2e; 
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -65,7 +65,7 @@
   line-height: 1.6;
 }
 
-/* === TÍTULOS CON ANIMACIÓN DEL VIDEO === */
+
 .column-title {
   width: fit-content;
   margin-bottom: 40px;
@@ -75,7 +75,6 @@
   font-weight: 500;
 }
 
-/* Línea base estática */
 .column-title::after {
   content: '';
   width: 100%;
@@ -86,26 +85,26 @@
   left: 0;
 }
 
-/* Línea animada que se mueve */
+
 .column-title::before {
   content: '';
   position: absolute;
   width: 25%;
   height: 2px;
-  background: #e4ac2e; /* Línea en color dorado */
+  background: #e4ac2e; 
   bottom: -10px;
   left: 0;
   z-index: 1;
   animation: moving 2s linear infinite;
 }
 
-/* Keyframes para el movimiento infinito */
+
 @keyframes moving {
   0% { left: -10px; opacity: 0; }
   50% { opacity: 1; }
   100% { left: 100%; opacity: 0; }
 }
-/* ========================================= */
+
 
 .links-list {
   list-style: none;
@@ -127,7 +126,7 @@
 
 .links-list li a:hover {
   color: #e4ac2e;
-  transform: translateX(5px); /* Pequeño salto a la derecha al hacer hover */
+  transform: translateX(5px); 
 }
 
 .address-text {
@@ -193,7 +192,6 @@
   color: #fff;
 }
 
-/* === RESPONSIVE DESIGN (Adaptación para móviles como en el video) === */
 @media (max-width: 900px) {
   .footer-column {
     flex-basis: 45%;
@@ -206,7 +204,7 @@
     flex-basis: 100%;
   }
   .footer-container {
-    border-top-left-radius: 80px; /* Curva más suave en móviles */
+    border-top-left-radius: 80px;
     padding: 60px 0 20px;
   }
 }
