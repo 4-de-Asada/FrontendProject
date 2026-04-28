@@ -23,7 +23,7 @@ export default function AcatiaguisPage() {
       <AcatiaguisBody />
 
       {/* CTA para vendedores + Footer */}
-      <div style={{ background: "linear-gradient(to right, #00093c, #2d0b00)" }}>
+      <div style={{ background: "linear-gradient(to right, #f4b802, #f49403)" }}>
 
         {/* Sección de llamada a la acción */}
         <div style={{ textAlign: "center", padding: "3.5rem 1.5rem 3rem", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>

@@ -2,7 +2,7 @@
 
 .hero {
   width: 100%;
-  background-color: #c9a227; /* Dorado/mostaza principal */
+  background: linear-gradient(to right, #f4b802, #f49403); /* Dorado/mostaza principal */
   padding: 0 2rem;
 }
 
