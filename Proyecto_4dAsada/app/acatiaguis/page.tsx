@@ -1,5 +1,6 @@
 // Página principal de Acatiaguis: mercado semanal de la comunidad FES Acatlán.
 import AcatiaguisHero from "./components/AcatiaguisHero";
+import AcatiaguisInfoBar from "./components/AcatiaguisInfoBar";
 
 export const metadata = {
   title: "Acatiaguis – Garra Deal",
@@ -11,6 +12,9 @@ export default function AcatiaguisPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero con título y día de mercado */}
       <AcatiaguisHero />
+
+      {/* Barra de información: ubicación, horario y vendedores */}
+      <AcatiaguisInfoBar />
 
       {/* Contenido futuro de la página */}
       <div className="mx-auto max-w-6xl px-6 py-10">

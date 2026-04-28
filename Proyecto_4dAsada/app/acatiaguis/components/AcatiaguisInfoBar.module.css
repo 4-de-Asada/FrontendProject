@@ -1,0 +1,58 @@
+/* ─── Barra de información Acatiaguis ────────────────────────────────────── */
+
+.bar {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.55rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ─── Ítem ───────────────────────────────────────────────────────────────── */
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: #c9a227; /* Dorado del hero */
+  flex-shrink: 0;
+}
+
+/* ─── Divisor ────────────────────────────────────────────────────────────── */
+
+.divider {
+  width: 1px;
+  height: 0.9rem;
+  background-color: #d1d5db;
+  flex-shrink: 0;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .divider {
+    display: none;
+  }
+
+  .inner {
+    justify-content: flex-start;
+    gap: 0.5rem 1rem;
+  }
+}
