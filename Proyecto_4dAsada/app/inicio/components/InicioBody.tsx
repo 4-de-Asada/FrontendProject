@@ -81,6 +81,52 @@ const DESTACADOS: ProductCardProps[] = [
   },
 ];
 
+// ─── Pasos ¿Cómo funciona? ───────────────────────────────────────────────────
+
+const STEPS = [
+  {
+    num: "1",
+    name: "Regístrate",
+    desc: "Usa tu correo institucional @pcunam.acatlan.unam.mx para crear tu cuenta.",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0" />
+      </svg>
+    ),
+  },
+  {
+    num: "2",
+    name: "Explora",
+    desc: "Busca productos y ve avisos publicados por la comunidad universitaria.",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75}>
+        <circle cx="11" cy="11" r="7" />
+        <path strokeLinecap="round" d="M21 21l-4.35-4.35" />
+      </svg>
+    ),
+  },
+  {
+    num: "3",
+    name: "Contacta",
+    desc: "Chatea directamente con vendedores para acordar detalles de entrega.",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg>
+    ),
+  },
+  {
+    num: "4",
+    name: "Intercambia",
+    desc: "Realiza la transacción de forma segura en el campus universitario.",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+      </svg>
+    ),
+  },
+];
+
 // ─── Componente ───────────────────────────────────────────────────────────────
 
 export default function InicioBody() {
@@ -141,6 +187,20 @@ export default function InicioBody() {
           onClose={() => setSeleccionado(null)}
         />
       )}
+
+      {/* ── ¿Cómo funciona? ───────────────────────────────────────────────── */}
+      <div className={styles.howSection}>
+        <h2 className={styles.howTitle}>¿Cómo funciona Garra Deal?</h2>
+        <div className={styles.stepsGrid}>
+          {STEPS.map((step) => (
+            <div key={step.num} className={styles.step}>
+              <div className={styles.stepIcon}>{step.icon}</div>
+              <p className={styles.stepName}>{step.num}. {step.name}</p>
+              <p className={styles.stepDesc}>{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
