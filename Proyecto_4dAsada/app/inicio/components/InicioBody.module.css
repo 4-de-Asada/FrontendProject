@@ -1,0 +1,133 @@
+/* ─── Cuerpo de Inicio ────────────────────────────────────────────────────── */
+
+.body {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   SECCIÓN DE MÓDULOS
+══════════════════════════════════════════════════════════════════════════════ */
+
+.modulesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) { .modulesGrid { grid-template-columns: 1fr; } }
+
+/* ─── Tarjeta de módulo ──────────────────────────────────────────────────── */
+
+.moduleCard {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.moduleCard:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.moduleImg {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.moduleBody {
+  padding: 1rem 1rem 1.1rem;
+}
+
+.moduleMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.45rem;
+}
+
+.moduleTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.moduleBadge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badgeYellow { background: #fef3c7; color: #92400e; }
+.badgeBlue   { background: #dbeafe; color: #1e40af; }
+.badgeRed    { background: #fee2e2; color: #991b1b; }
+
+.moduleDesc {
+  font-size: 0.82rem;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0 0 0.75rem;
+}
+
+.moduleLink {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1a2b5e;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  transition: gap 0.15s ease;
+}
+
+.moduleLink:hover { gap: 0.45rem; }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   PRODUCTOS DESTACADOS
+══════════════════════════════════════════════════════════════════════════════ */
+
+.featuredHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.featuredTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.verTodos {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1a2b5e;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  transition: gap 0.15s ease;
+}
+
+.verTodos:hover { gap: 0.45rem; }
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) { .featuredGrid { grid-template-columns: 1fr; } }
+@media (min-width: 640px) and (max-width: 768px) { .featuredGrid { grid-template-columns: repeat(2, 1fr); } }

@@ -1,5 +1,6 @@
 // Página de inicio: landing principal de Garra Deal.
 import InicioHero from "./components/InicioHero";
+import InicioBody from "./components/InicioBody";
 
 export const metadata = {
   title: "Inicio – Garra Deal",
@@ -12,7 +13,8 @@ export default function InicioPage() {
       {/* Hero de bienvenida */}
       <InicioHero />
 
-      {/* Contenido futuro de la página de inicio */}
+      {/* Cuerpo: módulos y productos destacados */}
+      <InicioBody />
     </div>
   );
 }
