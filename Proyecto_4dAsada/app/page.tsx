@@ -5,6 +5,7 @@ import { useState } from "react";
 import ProductGrid from "./components/ProductGrid";
 import MarketplaceHero, { Categoria, SortOption } from "./components/MarketplaceHero";
 import { ProductCardProps } from "./components/ProductCard";
+import Footer from "./Footer/Footer";
 
 // ─── Datos de prueba ──────────────────────────────────────────────────────────
 
@@ -74,7 +75,7 @@ const productos: ProductCardProps[] = [
     imageAlt: "Mochila Herschel",
     title: "Mochila Herschel Little America",
     price: 950,
-    description: "Color negro, compartimento para laptop de 15\". Impecable.",
+    description: 'Color negro, compartimento para laptop de 15". Impecable.',
     sellerName: "Diego Soto",
     sellerRating: 4.0,
     sellerReviewCount: 4,
@@ -162,6 +163,9 @@ export default function Home() {
           orden={orden}
         />
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
