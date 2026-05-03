@@ -1,0 +1,63 @@
+.hero {
+  width: 100%;
+  background-color: #1a2b5e;
+  padding: 0 2rem;
+}
+
+.content {
+  max-width: 72rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  gap: 1rem;
+}
+
+/* LOGO */
+.logo {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  opacity: 0.9;
+}
+
+/* TEXTO */
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f3f1f1;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: #f3f3f2;
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .badge {
+    align-self: flex-start;
+  }
+}
