@@ -4,7 +4,8 @@ import InicioBody from "./components/InicioBody";
 import Footer from "../Footer/Footer";
 
 export const metadata = {
-  title: "Inicio – Garra Deal",
+  // title: "Inicio – Garra Deal",
+  title: "Inicio – Garra GARRONA",
   description: "La plataforma oficial de compra-venta para la comunidad de FES Acatlán UNAM.",
 };
 
