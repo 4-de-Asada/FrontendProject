@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { signup } from "./actions";
-import styles from '../login.module.css';
-import AuthLayout from "../_components/authLayout";
+import styles from './login.module.css';
+import AuthLayout from "./authLayout";
 
 export default async function RegisterPage(
 	{searchParams,}: {searchParams: Promise<{ error?: string; message?: string }>;}
@@ -152,7 +152,7 @@ export default async function RegisterPage(
 			<div className={styles.footerText}>
 				<p>
 					¿Ya tienes cuenta?{' '}
-					<Link href="/login/ingreso" className={styles.linkBold}>
+					<Link href="/Login/ingreso" className={styles.linkBold}>
 						Inicia sesión
 					</Link>
 				</p>
