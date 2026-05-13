@@ -2,8 +2,8 @@
 "use client";
 
 import { useState } from "react";
-import ProductCard, { ProductCardProps } from "../../components/ProductCard";
-import ProductModal from "../../components/ProductModal";
+import ProductCard, { ProductCardProps } from "../../components/ui/ProductCard";
+import ProductModal from "../../components/ui/ProductModal";
 import styles from "./AcatiaguisBody.module.css";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────

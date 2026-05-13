@@ -17,7 +17,6 @@ export default function Footer() {
           </div>
           <p className={styles['company-description']}>
             Plataforma de compra-venta para la comunidad de FES Acatlán UNAM <br/><br/>
-            Presidenta con "a" de pendeja, no se te olvide.
           </p>
         </div>
 

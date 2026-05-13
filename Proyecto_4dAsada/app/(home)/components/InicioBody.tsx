@@ -4,8 +4,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import ProductCard, { ProductCardProps } from "../../components/ProductCard";
-import ProductModal from "../../components/ProductModal";
+import ProductCard, { ProductCardProps } from "../../components/ui/ProductCard";
+import ProductModal from "../../components/ui/ProductModal";
 import styles from "./InicioBody.module.css";
 
 // ─── Módulos del sitio ────────────────────────────────────────────────────────

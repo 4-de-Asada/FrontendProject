@@ -8,9 +8,9 @@ import { usePathname } from "next/navigation";
 // ─── Enlaces de navegación ──────────────────────────────────────────────────
 
 const NAV_LINKS = [
-  { label: "Inicio",       href: "/inicio" },
-  { label: "Acatiaguis",  href: "/acatiaguis" },
-  { label: "Marketplace", href: "/" },
+  { label: "Inicio",       href: "/" },
+  { label: "Acatiaguis",  href: "/acatianguis" },
+  { label: "Marketplace", href: "/marketplace" },
   { label: "Servicios",   href: "/servicios" },
 ];
 
@@ -85,6 +85,7 @@ export default function Navbar() {
           <button
             aria-label="Mi perfil"
             className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 transition-colors"
+            // href="/perfil"
           >
             <svg
               className="w-5 h-5"

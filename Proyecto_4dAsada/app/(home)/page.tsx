@@ -1,7 +1,6 @@
 // Página de inicio: landing principal de Garra Deal.
 import InicioHero from "./components/InicioHero";
 import InicioBody from "./components/InicioBody";
-import Footer from "../Footer/Footer";
 
 export const metadata = {
   title: "Inicio – Garra Deal",
@@ -45,9 +44,6 @@ export default function InicioPage() {
             Crear Cuenta Gratis
           </a>
         </div>
-
-        {/* Footer compartido */}
-        <Footer />
       </div>
     </div>
   );
