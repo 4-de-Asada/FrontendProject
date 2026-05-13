@@ -6,33 +6,45 @@ export async function middleware(request: NextRequest) {
     request: { headers: request.headers },
   })
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
-    // process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || ''
+
+  if (!supabaseUrl || !supabaseKey) {
+    console.warn('[middleware] Supabase env vars missing, skipping auth')
+    return response
+  }
+
+  let supabase
+  try {
+    supabase = createServerClient(supabaseUrl, supabaseKey, {
       cookies: {
-        getAll() { return request.cookies.getAll() },
+        getAll() {
+          return request.cookies.getAll()
+        },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
-          response = NextResponse.next({ request })
-          cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options))
+          cookiesToSet.forEach(({ name, value, options }) =>
+            response.cookies.set(name, value, options)
+          )
         },
       },
+    })
+  } catch {
+    return response
+  }
+
+  try {
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
+      return NextResponse.redirect(new URL('/ingreso', request.url))
     }
-  )
-
-  const { data: { user } } = await supabase.auth.getUser()
-
-  // PROTECCIÓN DE RUTAS: 
-  // Si no hay usuario y trata de entrar a /dashboard, mandarlo a /login
-  if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
-    return NextResponse.redirect(new URL('/login', request.url))
+  } catch {
+    // Supabase unavailable, let request through
   }
 
   return response
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)'],
+  matcher: ['/dashboard/:path*'],
 }
