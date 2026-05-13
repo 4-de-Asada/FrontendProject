@@ -16,7 +16,7 @@ export default function Footer() {
             <h2 className={styles['company-name']}>Garra Deal</h2>
           </div>
           <p className={styles['company-description']}>
-            Plataforma de compra-venta para la comunidad de FES Acatlán UNAM <br/><br/>
+            Plataforma de compra-venta para la comunidad de FES Acatlán UNAM. <br/><br/>
           </p>
         </div>
 

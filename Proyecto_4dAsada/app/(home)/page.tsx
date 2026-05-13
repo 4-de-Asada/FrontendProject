@@ -3,7 +3,8 @@ import InicioHero from "./components/InicioHero";
 import InicioBody from "./components/InicioBody";
 
 export const metadata = {
-  title: "Inicio – Garra Deal",
+  // title: "Inicio – Garra Deal",
+  title: "Inicio – Garra GARRONA",
   description: "La plataforma oficial de compra-venta para la comunidad de FES Acatlán UNAM.",
 };
 
