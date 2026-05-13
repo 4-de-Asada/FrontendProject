@@ -3,7 +3,6 @@ import AcatiaguisHero from "./components/AcatiaguisHero";
 import AcatiaguisInfoBar from "./components/AcatiaguisInfoBar";
 import AcatiaguisBody from "./components/AcatiaguisBody";
 import AcatiaguisCTAButton from "./components/AcatiaguisCTAButton";
-import Footer from "../Footer/Footer";
 
 export const metadata = {
   title: "Acatiaguis – Garra Deal",
@@ -35,9 +34,6 @@ export default function AcatiaguisPage() {
           </p>
           <AcatiaguisCTAButton />
         </div>
-
-        {/* Footer compartido */}
-        <Footer />
       </div>
     </div>
   );

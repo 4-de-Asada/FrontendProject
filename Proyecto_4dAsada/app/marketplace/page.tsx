@@ -2,10 +2,9 @@
 "use client";
 
 import { useState } from "react";
-import ProductGrid from "./components/ProductGrid";
-import MarketplaceHero, { Categoria, SortOption } from "./components/MarketplaceHero";
-import { ProductCardProps } from "./components/ProductCard";
-import Footer from "./Footer/Footer";
+import ProductGrid from "../components/ui/ProductGrid";
+import MarketplaceHero, { Categoria, SortOption } from "./MarketplaceHero";
+import { ProductCardProps } from "../components/ui/ProductCard";
 
 // ─── Datos de prueba ──────────────────────────────────────────────────────────
 
@@ -166,7 +165,6 @@ export default function Home() {
 
       {/* Footer */}
       <div style={{ background: "linear-gradient(to right, #00093c, #2d0b00)" }}>
-        <Footer />
       </div>
     </div>
   );

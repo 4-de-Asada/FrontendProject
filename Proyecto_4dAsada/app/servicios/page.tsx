@@ -1,6 +1,5 @@
 import ServiciosBody from "./components/ServiciosBody";
 import ServiciosHero from "./components/ServiciosHero";
-import Footer from "../Footer/Footer";
 
 export const metadata = {
   title: "Servicios – Garra Deal",
@@ -12,7 +11,6 @@ export default function ServiciosPage() {
         <div className="min-h-screen bg-gray-50">
             <ServiciosHero />
             <ServiciosBody />
-            <Footer />
         </div>
     );
 }
