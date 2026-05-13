@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './login.module.css'; // Ajusta la ruta de los puntos según dónde guardes el archivo
+import styles from './auth.module.css'; // Ajusta la ruta de los puntos según dónde guardes el archivo
 
 interface AuthLayoutProps {
   children: React.ReactNode;

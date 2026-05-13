@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { signup } from "./actions";
-import styles from './login.module.css';
-import AuthLayout from "./authLayout";
+import { signup } from "../actions";
+import styles from '../auth.module.css';
+import AuthLayout from "../authLayout";
 
 export default async function RegisterPage(
 	{searchParams,}: {searchParams: Promise<{ error?: string; message?: string }>;}
@@ -35,7 +35,9 @@ export default async function RegisterPage(
 							<input 	
 								id="nombre"	
 								name="nombre" 
-								type="text" 
+								type="text"
+								minLength={2}
+								maxLength={50} 
 								required 
 								placeholder="Ej. Hana" 
 								className={styles.input} 
@@ -49,6 +51,8 @@ export default async function RegisterPage(
 								id="apellidos" 
 								name="apellidos" 
 								type="text" 
+								minLength={2}
+								maxLength={100} 
 								required 
 								placeholder="Ej. Montana" 
 								className={styles.input} 
@@ -119,6 +123,7 @@ export default async function RegisterPage(
 								type="password" 
 								required 
 								minLength={8} 
+								maxLength={64}
 								placeholder="••••••••" 
 								className={styles.input} 
 							/>
@@ -133,6 +138,7 @@ export default async function RegisterPage(
 								type="password" 
 								required 
 								minLength={8} 
+								maxLength={64}
 								placeholder="••••••••" 
 								className={styles.input} 
 							/>
@@ -152,7 +158,7 @@ export default async function RegisterPage(
 			<div className={styles.footerText}>
 				<p>
 					¿Ya tienes cuenta?{' '}
-					<Link href="/Login/ingreso" className={styles.linkBold}>
+					<Link href="/ingreso" className={styles.linkBold}>
 						Inicia sesión
 					</Link>
 				</p>

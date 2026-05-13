@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { login } from './actions';
-import styles from './login.module.css'; // Subimos un nivel para encontrar el CSS
-import AuthLayout from "./authLayout";
+import { login } from '../actions';
+import styles from '../auth.module.css'; // Subimos un nivel para encontrar el CSS
+import AuthLayout from "../authLayout";
 
 export default async function LoginPage(  
    {searchParams,}:{searchParams: Promise<{ error?: string, message?: string }>;}
@@ -52,6 +52,7 @@ export default async function LoginPage(
                      id="contrasenia"
                      name="contrasenia"
                      type="password"
+                     maxLength={64}
                      required
                      placeholder="Tu contraseña"
                      className={styles.input}
@@ -86,7 +87,7 @@ export default async function LoginPage(
          <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
                ¿No tienes cuenta?{' '}
-               <Link href="/Login/registro" className={styles.linkBold}>Regístrate aquí</Link>
+               <Link href="/registro" className={styles.linkBold}>Regístrate aquí</Link>
             </p>
          </div>
 

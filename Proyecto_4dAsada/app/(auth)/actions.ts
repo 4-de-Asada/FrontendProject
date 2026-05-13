@@ -18,7 +18,7 @@ export async function signup(formData: FormData) {
 
    // VALIDACIÓN 
    if (contrasenia !== confirmarContrasenia) {
-      redirect('/Login/registro?error=Las contrasenias no coinciden')
+      redirect('/registro?error=Las contrasenias no coinciden')
    }
 
    // Crear usuario en Supa
@@ -27,12 +27,12 @@ export async function signup(formData: FormData) {
       password: contrasenia,
       options: {
          // Le dice a Supabase que regrese a la app tras verificar, usando localhost como respaldo
-         emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/Login/ingreso/`,
+         emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/ingreso/`,
       },
    })
 
    if (authError) {
-      redirect('/Login/registro?error=' + encodeURIComponent(authError.message))
+      redirect('/registro?error=' + encodeURIComponent(authError.message))
    }
 
    // Insertar perfil en la tabla perfiles
@@ -49,13 +49,15 @@ export async function signup(formData: FormData) {
          },
          ])
 
+         console.log('OOOOOOOOOOOO', profileError)
+
       if (profileError) {
          console.error('Erroralcrearperfil:', profileError.message)
-         redirect('/Login/registro?error=ESTA MAL. No se pudo registrar el usuario.')         
+         redirect('/registro?error=ESTA MAL. No se pudo registrar el usuario.')         
       }
    }
    revalidatePath('/', 'layout');
-   redirect('/Login/ingreso?message=' + encodeURIComponent('¡Registro exitoso! Revisa tu correo institucional para confirmar tu cuenta.'));
+   redirect('/ingreso?message=' + encodeURIComponent('¡Registro exitoso! Revisa tu correo institucional para confirmar tu cuenta.'));
 }
 
 
@@ -76,7 +78,7 @@ export async function login(formData: FormData) {
 
   if (error) {
     // Aquí podrías redirigir a una página de error o manejarlo con estados
-    redirect('/Login/ingreso?error=Credenciales%20invalidas')
+    redirect('/ingreso?error=Credenciales%20invalidas')
   }
 
   revalidatePath('/', 'layout')
