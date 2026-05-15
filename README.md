@@ -4,8 +4,8 @@
 
 ## Lista de Trabajo
 
-- [ ] Carlos: Plantilla de las Cards
-- [ ] Samuel: Header y el Hero
+- [x] Carlos: Plantilla de las Cards, navBar y Hero
+- [ ] Samuel: Header y el Hero de Inicio
 - [ ] Antonio: Footer
 - [ ] Rafael: Hero del Marketplace
 - [ ] Saul: Body Marketplace
