@@ -73,7 +73,7 @@ export default async function LoginPage(
                </div>
             
                <div className="text-sm">
-                  <Link href="/login/recuperar" className={styles.link}>¿Olvidaste tu contraseña?</Link>
+                  <Link href="/olvidoContrasenia" className={styles.link}>¿Olvidaste tu contraseña?</Link>
                </div>
             </div>
 
