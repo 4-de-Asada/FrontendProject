@@ -143,7 +143,7 @@ export async function login(formData: FormData) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/') // Redirige al inicio si el login es exitoso
+  redirect('/?login=success') // Redirige al inicio con parámetro de éxito
   }
 
   export async function forgotPassword(formData: FormData) {
@@ -166,4 +166,11 @@ export async function login(formData: FormData) {
    }
 
    redirect('/olvidoContrasenia?message=' + encodeURIComponent('Se ha enviado un enlace de recuperación a tu correo institucional.'))
-  }
+   }
+
+   export async function logout() {
+   	const supabase = await createClient()
+   	await supabase.auth.signOut()
+   	revalidatePath('/', 'layout')
+   	redirect('/')
+   }
