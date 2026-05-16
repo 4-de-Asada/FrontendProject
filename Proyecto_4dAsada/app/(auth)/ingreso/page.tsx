@@ -3,7 +3,7 @@ import { login } from '../actions';
 import styles from '../auth.module.css'; // Subimos un nivel para encontrar el CSS
 import AuthLayout from "../authLayout";
 
-export default async function LoginPage(  
+export default async function IngresoPage(  
    {searchParams,}:{searchParams: Promise<{ error?: string, message?: string }>;}
    )    
    {
@@ -73,7 +73,7 @@ export default async function LoginPage(
                </div>
             
                <div className="text-sm">
-                  <Link href="/login/recuperar" className={styles.link}>¿Olvidaste tu contraseña?</Link>
+                  <Link href="/olvidoContrasenia" className={styles.link}>¿Olvidaste tu contraseña?</Link>
                </div>
             </div>
 

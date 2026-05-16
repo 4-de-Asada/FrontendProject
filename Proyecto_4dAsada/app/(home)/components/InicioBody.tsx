@@ -129,7 +129,7 @@ const STEPS = [
 
 // ─── Componente ───────────────────────────────────────────────────────────────
 
-export default function InicioBody() {
+export default function InicioBody({ isLoggedIn }: { isLoggedIn?: boolean }) {
   const [seleccionado, setSeleccionado] = useState<ProductCardProps | null>(null);
 
   return (
@@ -189,18 +189,20 @@ export default function InicioBody() {
       )}
 
       {/* ── ¿Cómo funciona? ───────────────────────────────────────────────── */}
-      <div className={styles.howSection}>
-        <h2 className={styles.howTitle}>¿Cómo funciona Garra Deal?</h2>
-        <div className={styles.stepsGrid}>
-          {STEPS.map((step) => (
-            <div key={step.num} className={styles.step}>
-              <div className={styles.stepIcon}>{step.icon}</div>
-              <p className={styles.stepName}>{step.num}. {step.name}</p>
-              <p className={styles.stepDesc}>{step.desc}</p>
-            </div>
-          ))}
+      {!isLoggedIn && (
+        <div className={styles.howSection}>
+          <h2 className={styles.howTitle}>¿Cómo funciona Garra Deal?</h2>
+          <div className={styles.stepsGrid}>
+            {STEPS.map((step) => (
+              <div key={step.num} className={styles.step}>
+                <div className={styles.stepIcon}>{step.icon}</div>
+                <p className={styles.stepName}>{step.num}. {step.name}</p>
+                <p className={styles.stepDesc}>{step.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }

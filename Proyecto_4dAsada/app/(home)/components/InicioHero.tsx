@@ -1,8 +1,23 @@
 // Hero de la página de inicio: bienvenida, descripción y acciones principales.
 import Link from "next/link";
 import styles from "./InicioHero.module.css";
+import BotonPublicacion from "../../components/BotonPublicacion";
+import { createClient } from "@/utils/supabase/server";
 
-export default function InicioHero() {
+export default async function InicioHero() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  let profile = null;
+  if (user) {
+    const { data } = await supabase
+      .from('perfiles')
+      .select('*')
+      .eq('id', user.id)
+      .single();
+    profile = data;
+  }
+
   return (
     <section className={styles.hero}>
       {/* Imagen de fondo con overlay */}
@@ -24,12 +39,16 @@ export default function InicioHero() {
 
         {/* Botones */}
         <div className={styles.actions}>
-          <Link href="/" className={styles.btnPrimary}>
+          <Link href="/marketplace" className={styles.btnPrimary}>
             Explorar Marketplace
           </Link>
-          <Link href="/publicar" className={styles.btnSecondary}>
+          <BotonPublicacion 
+            user={user} 
+            profile={profile} 
+            className={styles.btnSecondary}
+          >
             Publicar Producto
-          </Link>
+          </BotonPublicacion>
         </div>
       </div>
     </section>
