@@ -43,44 +43,6 @@ const MODULES = [
   },
 ];
 
-// ─── Productos destacados ──────────────────────────────────────────────────────
-
-const DESTACADOS: ProductCardProps[] = [
-  {
-    imageSrc: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400&q=80",
-    imageAlt: "iPhone 12 Pro",
-    title: "iPhone 12 Pro 128GB",
-    price: 8500,
-    description: "iPhone en excelente estado, batería al 89%, incluye cargador original y funda. Sin detalles estéticos.",
-    sellerName: "Carlos Mendoza",
-    rating: 4.8,
-    category: "Electrónica",
-    publishedAt: "2024-01-14",
-  },
-  {
-    imageSrc: "https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&q=80",
-    imageAlt: "Cálculo diferencial",
-    title: "Cálculo Diferencial e Integral",
-    price: 350,
-    description: "Libro en buen estado, sin rayaduras ni anotaciones. Ideal para estudiantes de ingeniería.",
-    sellerName: "María López",
-    rating: 4.5,
-    category: "Libros",
-    publishedAt: "2024-01-12",
-  },
-  {
-    imageSrc: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80",
-    imageAlt: "Mochila North Face",
-    title: "Mochila North Face Original",
-    price: 650,
-    description: "Mochila resistente al agua, múltiples compartimentos, perfecta para laptop de 15\".",
-    sellerName: "Jorge Ramírez",
-    rating: 4.6,
-    category: "Accesorios",
-    publishedAt: "2024-01-10",
-  },
-];
-
 // ─── Pasos ¿Cómo funciona? ───────────────────────────────────────────────────
 
 const STEPS = [
@@ -129,7 +91,12 @@ const STEPS = [
 
 // ─── Componente ───────────────────────────────────────────────────────────────
 
-export default function InicioBody({ isLoggedIn }: { isLoggedIn?: boolean }) {
+interface InicioBodyProps {
+  destacados: ProductCardProps[];
+  isLoggedIn?: boolean;
+}
+
+export default function InicioBody({ destacados, isLoggedIn }: InicioBodyProps) {
   const [seleccionado, setSeleccionado] = useState<ProductCardProps | null>(null);
 
   return (
@@ -171,7 +138,7 @@ export default function InicioBody({ isLoggedIn }: { isLoggedIn?: boolean }) {
       </div>
 
       <div className={styles.featuredGrid}>
-        {DESTACADOS.map((producto) => (
+        {destacados.map((producto) => (
           <ProductCard
             key={producto.title}
             {...producto}
