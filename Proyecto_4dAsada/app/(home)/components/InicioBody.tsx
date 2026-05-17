@@ -1,4 +1,3 @@
-// Cuerpo de la página de inicio: tarjetas de módulos y productos destacados.
 "use client";
 
 import Link from "next/link";
