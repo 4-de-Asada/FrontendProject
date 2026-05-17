@@ -5,7 +5,7 @@ import styles from "./AcatiaguisCTA.module.css";
 
 export default function AcatiaguisCTAButton() {
   return (
-    <a href="/registro-vendedor" className={styles.btn}>
+    <a href="/registro" className={styles.btn}>
       Registrarme como Vendedor
     </a>
   );
