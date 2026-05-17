@@ -1,19 +1,10 @@
-// Hero del marketplace: encabezado, filtros por categoría, selector de orden y contador de resultados.
 "use client";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
 export type SortOption = "recientes" | "precio-asc" | "precio-desc";
 
-export const CATEGORIAS = [
-  "Todos",
-  "Electrónica",
-  "Libros",
-  "Accesorios",
-  "Deportes",
-] as const;
-
-export type Categoria = (typeof CATEGORIAS)[number];
+export type Categoria = string;
 
 interface MarketplaceHeroProps {
   totalProductos: number;
@@ -21,13 +12,14 @@ interface MarketplaceHeroProps {
   ordenActivo: SortOption;
   onCategoriaChange: (cat: Categoria) => void;
   onOrdenChange: (orden: SortOption) => void;
+  categorias: string[];
 }
 
 // ─── Opciones de ordenamiento ─────────────────────────────────────────────────
 
 const OPCIONES_ORDEN: { value: SortOption; label: string }[] = [
-  { value: "recientes",   label: "Más recientes" },
-  { value: "precio-asc",  label: "Precio: menor a mayor" },
+  { value: "recientes", label: "Más recientes" },
+  { value: "precio-asc", label: "Precio: menor a mayor" },
   { value: "precio-desc", label: "Precio: mayor a menor" },
 ];
 
@@ -39,6 +31,7 @@ export default function MarketplaceHero({
   ordenActivo,
   onCategoriaChange,
   onOrdenChange,
+  categorias,
 }: MarketplaceHeroProps) {
   return (
     <section className="bg-white border-b border-gray-100">
@@ -60,7 +53,7 @@ export default function MarketplaceHero({
 
           {/* Botones de categoría */}
           <div className="flex flex-wrap gap-2">
-            {CATEGORIAS.map((cat) => {
+            {categorias.map((cat) => {
               const activo = cat === categoriaActiva;
               return (
                 <button
