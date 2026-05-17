@@ -1,0 +1,58 @@
+// Página de inicio: landing principal de Garra Deal.
+import InicioHero from "./components/InicioHero";
+import InicioBody from "./components/InicioBody";
+import { createClient } from "@/utils/supabase/server";
+import BienvenidaSection from "@/app/components/BienvenidaSection";
+
+export const metadata = {
+  title: "Inicio – Garra Deal",
+  description: "La plataforma oficial de compra-venta para la comunidad de FES Acatlán UNAM.",
+};
+
+export default async function InicioPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <BienvenidaSection />
+      
+      {/* Hero de bienvenida */}
+      <InicioHero />
+
+      {/* Cuerpo: módulos y productos destacados */}
+      <InicioBody isLoggedIn={!!user} />
+
+      {/* CTA + Footer */}
+      {!user && (
+        <div style={{ background: "linear-gradient(to right, #00093c, #2d0b00)" }}>
+          {/* Sección ¿Listo para comenzar? */}
+          <div style={{ textAlign: "center", padding: "3.5rem 1.5rem 3rem", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+            <h2 style={{ color: "#fff", fontSize: "1.6rem", fontWeight: 700, marginBottom: "0.75rem" }}>
+              ¿Listo para comenzar?
+            </h2>
+            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem", maxWidth: "520px", margin: "0 auto 1.75rem" }}>
+              Únete a la comunidad de Garra Deal y descubre todo lo que tus compañeros tienen para ofrecer
+            </p>
+            <a
+              href="/registro"
+              style={{
+                display: "inline-block",
+                padding: "0.7rem 2rem",
+                background: "#e4ac2e",
+                border: "2px solid #e4ac2e",
+                color: "#00093c",
+                borderRadius: "0.4rem",
+                fontWeight: 600,
+                fontSize: "0.95rem",
+                textDecoration: "none",
+              }}
+            >
+              Crear Cuenta Gratis
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

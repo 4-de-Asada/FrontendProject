@@ -16,6 +16,14 @@
   animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.loginToast {
+  border-left: 5px solid #10b981;
+}
+
+.logoutToast {
+  border-left: 5px solid #1a2b5e;
+}
+
 .progress {
   position: absolute;
   bottom: 0;
@@ -23,7 +31,7 @@
   height: 4px;
   background: linear-gradient(to right, #C49A45, #1a2b5e);
   width: 100%;
-  animation: progress 5s linear forwards;
+  animation: progress 4s linear forwards;
 }
 
 @keyframes progress {
@@ -43,8 +51,6 @@
 }
 
 .icon {
-  background-color: #f0fdf4;
-  color: #10b981;
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 1rem;
@@ -52,7 +58,18 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.loginToast .icon {
+  background-color: #f0fdf4;
+  color: #10b981;
   box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.1);
+}
+
+.logoutToast .icon {
+  background-color: #f0f4ff;
+  color: #1a2b5e;
+  box-shadow: inset 0 0 0 1px rgba(26, 43, 94, 0.1);
 }
 
 .content {

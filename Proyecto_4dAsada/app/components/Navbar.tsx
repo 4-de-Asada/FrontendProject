@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
-import BotonPublicacion from "./BotonPublicacion";
-import NavbarLinks from "./NavbarLinks";
-import UserMenu from "./UserMenu";
+import BotonPublicacionButton from "./BotonPublicacionButton";
+import NavegacionLinks from "./NavegacionLinks";
+import UsuarioMenu from "./UsuarioMenu";
 
 export default async function Navbar() {
   const supabase = await createClient();
@@ -39,11 +39,11 @@ export default async function Navbar() {
         </Link>
 
         {/* Enlaces centrados - NavbarLinks maneja el estado activo en el cliente */}
-        <NavbarLinks />
+        <NavegacionLinks />
 
         <div className="flex items-center gap-3">
           {/* Botón de publicar con validación */}
-          <BotonPublicacion 
+          <BotonPublicacionButton 
             user={user} 
             profile={profile}
             className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-[#1a2b5e] transition-colors"
@@ -60,10 +60,10 @@ export default async function Navbar() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v8M8 12h8" />
             </svg>
             Publicar
-          </BotonPublicacion>
+          </BotonPublicacionButton>
 
           {/* Menú de usuario (maneja internamente sesión e invitado) */}
-          <UserMenu user={user} profile={profile} />
+          <UsuarioMenu user={user} profile={profile} />
         </div>
 
       </nav>
