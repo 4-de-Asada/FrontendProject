@@ -174,3 +174,77 @@ export async function login(formData: FormData) {
    	revalidatePath('/', 'layout')
    	redirect('/')
    }
+
+export async function updatePerfil(
+  formData: FormData
+): Promise<{ type: "success" | "error"; text: string }> {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) return { type: "error", text: "No hay sesión activa." };
+
+  const nombre   = (formData.get("nombre")   as string)?.trim();
+  const apellido = (formData.get("apellido") as string)?.trim();
+  const telefono = (formData.get("telefono") as string)?.trim() || null;
+
+  if (!nombre || !apellido) {
+    return { type: "error", text: "Nombre y apellidos son obligatorios." };
+  }
+
+  if (telefono && !/^[0-9]{10}$/.test(telefono)) {
+    return { type: "error", text: "El teléfono debe tener 10 dígitos." };
+  }
+
+  const { error } = await supabase
+    .from("perfiles")
+    .update({ nombre, apellido, telefono })
+    .eq("id", user.id);
+
+  if (error) return { type: "error", text: "No se pudieron guardar los cambios." };
+
+  revalidatePath("/perfil");
+  return { type: "success", text: "Datos actualizados correctamente." };
+}
+
+export async function uploadComprobante(
+  formData: FormData
+): Promise<{ type: "success" | "error"; text: string }> {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) return { type: "error", text: "No hay sesión activa." };
+
+  const documento = formData.get("documento") as File | null;
+
+  if (!documento || documento.size === 0) {
+    return { type: "error", text: "Selecciona un archivo antes de enviar." };
+  }
+
+  const fileExt = documento.name.split(".").pop();
+  const fileName = `${user.id}-${Date.now()}.${fileExt}`;
+  const filePath = `comprobantes/${fileName}`;
+
+  const { error: uploadError } = await supabase.storage
+    .from("documentos")
+    .upload(filePath, documento, { upsert: true });
+
+  if (uploadError) {
+    return { type: "error", text: "Error al subir el archivo. Intenta de nuevo." };
+  }
+
+  const { data: { publicUrl } } = supabase.storage
+    .from("documentos")
+    .getPublicUrl(filePath);
+
+  const { error: updateError } = await supabase
+    .from("perfiles")
+    .update({ url_comprobante: publicUrl })
+    .eq("id", user.id);
+
+  if (updateError) {
+    return { type: "error", text: "Archivo subido pero no se pudo guardar el enlace." };
+  }
+
+  revalidatePath("/perfil");
+  return { type: "success", text: "Comprobante enviado. El equipo revisará tu solicitud." };
+}
