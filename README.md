@@ -9,4 +9,6 @@
 - [ ] Antonio: Footer
 - [ ] Rafael: Hero del Marketplace
 - [ ] Saul: Body Marketplace
-> https://frontend-project-543r802d5-antonio4240s-projects.vercel.app/servicios
+
+## Deploy
+> https://frontend-project-two-mu.vercel.app
