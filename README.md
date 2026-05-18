@@ -32,11 +32,11 @@ Plataforma de compra-venta para la comunidad de **FES Acatlán UNAM**
 
 | Integrante | Áreas |
 |------------|-------|
-| Carlos | NavBar, Hero del Marketplace, Acatianguis, Página de Inicio, Pull Requests |
+| Carlos | NavBar, Hero del Marketplace, Acatianguis, Página de Inicio |
 | Samuel | Vistas de Login, Autenticación con Supabase |
 | Saúl | Página de Servicios |
 | Antonio | Footer, Vistas de Login |
-| Rafael | Diagrama E-R, Reporte, Conexión con Supabase, Perfil de usuario, Vista Solicitud Vendedor, 404 |
+| Rafael | Conexión con Supabase, Perfil de usuario, Vista Solicitud Vendedor, 404 |
 
 ## Variables de entorno
 
