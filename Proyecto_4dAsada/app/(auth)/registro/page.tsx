@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { signup } from "../actions";
+import { registrarUsuarioAction } from "../AutenticacionActions";
 import styles from '../auth.module.css';
-import AuthLayout from "../authLayout";
-import RegistroForm from "./components/form";
+import AutenticacionLayout from "../AutenticacionLayout";
+import RegistroForm from "./components/RegistroForm";
 
 export default async function RegistroPage(
 	{searchParams,}: {searchParams: Promise<{ error?: string; message?: string }>;}
@@ -11,7 +11,7 @@ export default async function RegistroPage(
 	const params = await searchParams;
 
 	return (
-		<AuthLayout subtitle="Crea tu cuenta pa">
+		<AutenticacionLayout subtitle="Crea tu cuenta pa">
 			{/* Mensajes de Error y Éxito */}
 			{params?.error && (
 				<div className={styles.errorAlert}>
@@ -25,7 +25,7 @@ export default async function RegistroPage(
 				</div>
 			)}
 
-			<RegistroForm singupAction={signup} />
+			<RegistroForm singupAction={registrarUsuarioAction} />
 
 			{/* Enlace al Login */}
 			<div className={styles.footerText}>
@@ -36,6 +36,6 @@ export default async function RegistroPage(
 					</Link>
 				</p>
 			</div>					
-		</AuthLayout>
+		</AutenticacionLayout>
 	);
 }

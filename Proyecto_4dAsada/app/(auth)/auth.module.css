@@ -30,6 +30,20 @@
   text-align: center;
 }
 
+.backHome {
+  display: inline-block;
+  color: #C49A45;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  transition: opacity 0.2s;
+}
+
+.backHome:hover {
+  opacity: 0.8;
+}
+
 @media (min-width: 640px) {
   .header {
     margin-left: auto;

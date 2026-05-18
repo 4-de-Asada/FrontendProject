@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { login } from '../actions';
+import { iniciarSesionAction } from '../AutenticacionActions';
 import styles from '../auth.module.css'; // Subimos un nivel para encontrar el CSS
-import AuthLayout from "../authLayout";
+import AutenticacionLayout from "../AutenticacionLayout";
 
 export default async function IngresoPage(  
    {searchParams,}:{searchParams: Promise<{ error?: string, message?: string }>;}
@@ -11,7 +11,7 @@ export default async function IngresoPage(
    const params = await searchParams;
 
    return (
-      <AuthLayout subtitle="Inicia sesión en tu cuenta pa">
+      <AutenticacionLayout subtitle="Inicia sesión en tu cuenta pa">
          {params?.error && (
             <div className={styles.errorAlert}>
                {params.error}
@@ -24,7 +24,7 @@ export default async function IngresoPage(
 				</div>
 			)}
 
-         <form className="space-y-6" action={login}>            
+         <form className="space-y-6" action={iniciarSesionAction}>            
             {/* Input Numero de cuenta */}
             <div>
                <label htmlFor="numCuenta" className={styles.label}>Número de Cuenta</label>
@@ -105,6 +105,6 @@ export default async function IngresoPage(
                </p>
             </div>
          </div>               
-      </AuthLayout>
+      </AutenticacionLayout>
    );
 }
