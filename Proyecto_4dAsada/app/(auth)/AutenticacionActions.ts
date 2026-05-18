@@ -7,7 +7,6 @@ import { revalidatePath } from 'next/cache'
 export async function registrarUsuarioAction(formData: FormData) {
    const supabase = await createClient()
 
-   // Extracción de datos
    const nombre = formData.get('nombre') as string;
    const apellidos = formData.get('apellidos') as string;
    const numeroCuenta = formData.get('numCuenta') as string;
@@ -17,7 +16,6 @@ export async function registrarUsuarioAction(formData: FormData) {
    const confirmarContrasenia = formData.get('confirmarContrasenia') as string;
    const documento = formData.get('documento') as File | null;
 
-   // 1. Validaciones básicas
    if (!nombre || !apellidos || !numeroCuenta || !contrasenia || !confirmarContrasenia) {
       redirect('/registro?error=' + encodeURIComponent('Todos los campos obligatorios deben ser completados.'))
    }
@@ -34,7 +32,6 @@ export async function registrarUsuarioAction(formData: FormData) {
       redirect('/registro?error=' + encodeURIComponent('El número de cuenta debe tener 9 dígitos.'))
    }
 
-   // 2. Validaciones específicas para vendedor
    if (esVendedor) {
       if (!telefono || !/^[0-9]{10}$/.test(telefono)) {
          redirect('/registro?error=' + encodeURIComponent('Para ser vendedor, el teléfono de 10 dígitos es obligatorio.'))
@@ -46,7 +43,6 @@ export async function registrarUsuarioAction(formData: FormData) {
 
    const email = `${numeroCuenta}@pcpuma.acatlan.unam.mx`;
 
-   // 3. Registro en Supabase Auth
    const { data: datosAutenticacion, error: errorAutenticacion } = await supabase.auth.signUp({
       email,
       password: contrasenia,
@@ -60,9 +56,7 @@ export async function registrarUsuarioAction(formData: FormData) {
    })
 
    if (errorAutenticacion) {
-      // Manejo de cuenta ya existente (Flujo de Recuperación)
-      if (errorAutenticacion.message.toLowerCase().includes("user already registered") || 
-          errorAutenticacion.message.toLowerCase().includes("usuario ya registrado")) {
+      if (errorAutenticacion.message.toLowerCase().includes("user already registered")) {
          redirect('/ingreso?error=' + encodeURIComponent('Este número de cuenta ya está registrado. Si no fuiste tú, por favor utiliza la opción "Olvidé mi contraseña" para recuperar tu cuenta con tu correo institucional.'));
       }
       redirect('/registro?error=' + encodeURIComponent(errorAutenticacion.message))
@@ -71,7 +65,6 @@ export async function registrarUsuarioAction(formData: FormData) {
    if (datosAutenticacion.user) {
       let urlComprobante = null;
 
-      // 4. Carga de documento si es vendedor
       if (esVendedor && documento) {
          const fileExt = documento.name.split('.').pop();
          const fileName = `${datosAutenticacion.user.id}-${Math.random()}.${fileExt}`;
@@ -82,9 +75,6 @@ export async function registrarUsuarioAction(formData: FormData) {
             .upload(filePath, documento);
 
          if (uploadError) {
-            console.error('Error al subir documento:', uploadError.message);
-            // Podríamos decidir si fallar todo el registro o continuar sin el doc
-            // Por ahora, lanzamos error ya que es obligatorio para vendedores
             redirect('/registro?error=' + encodeURIComponent('Error al subir el comprobante. Intenta de nuevo.'))
          }
 
@@ -95,7 +85,6 @@ export async function registrarUsuarioAction(formData: FormData) {
          urlComprobante = publicUrl;
       }
 
-      // 5. Insertar perfil en la tabla perfiles
       const { error: errorPerfil } = await supabase
          .from('perfiles')
          .insert([
@@ -111,8 +100,6 @@ export async function registrarUsuarioAction(formData: FormData) {
          ])
 
       if (errorPerfil) {
-         console.error('Error al crear perfil:', errorPerfil.message)
-         // Nota: En un entorno real, aquí se debería limpiar el usuario de Auth si falla el perfil
          redirect('/registro?error=' + encodeURIComponent('No se pudo completar el registro del perfil.'))         
       }
    }
@@ -120,7 +107,6 @@ export async function registrarUsuarioAction(formData: FormData) {
    revalidatePath('/', 'layout');
    redirect('/ingreso?message=' + encodeURIComponent('¡Registro exitoso! Revisa tu correo institucional para confirmar tu cuenta.'));
 }
-
 
 export async function iniciarSesionAction(formData: FormData) {
   const supabase = await createClient()
@@ -130,23 +116,20 @@ export async function iniciarSesionAction(formData: FormData) {
 
   const email = `${numeroCuenta}@pcpuma.acatlan.unam.mx`
 
-  const data = {
-    email: email,
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
     password: contrasenia,
-  }
-
-  const { error } = await supabase.auth.signInWithPassword(data)
+  })
 
   if (error) {
-    // Aquí podrías redirigir a una página de error o manejarlo con estados
     redirect('/ingreso?error=Credenciales%20invalidas')
   }
 
   revalidatePath('/', 'layout')
-  redirect('/?login=success') // Redirige al inicio con parámetro de éxito
-  }
+  redirect('/?login=success')
+}
 
-  export async function olvidoContraseniaAction(formData: FormData) {
+export async function olvidoContraseniaAction(formData: FormData) {
    const supabase = await createClient()
 
    const numeroCuenta = formData.get('numCuenta') as string;
@@ -166,73 +149,138 @@ export async function iniciarSesionAction(formData: FormData) {
    }
 
    redirect('/olvidoContrasenia?message=' + encodeURIComponent('Se ha enviado un enlace de recuperación a tu correo institucional.'))
-   }
+}
 
-   export async function cerrarSesionAction() {
+export async function cerrarSesionAction() {
    const supabase = await createClient()
    await supabase.auth.signOut()
    revalidatePath('/', 'layout')
    redirect('/?logout=success')
-   }
+}
 
-   // --- ACCIONES DE ADMINISTRADOR ---
+// --- ACCIONES DE PERFIL ---
 
-   export async function eliminarUsuarioAdminAction(userId: string) {
-      const supabaseAdmin = (await import('@/utils/supabase/admin')).createAdminClient();
+export async function updatePerfil(
+  formData: FormData
+): Promise<{ type: "success" | "error"; text: string }> {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
-      // Borrar de auth.users (esto borra en cascada en perfiles si está configurado)
-      const { error } = await supabaseAdmin.auth.admin.deleteUser(userId);
+  if (!user) return { type: "error", text: "No hay sesión activa." };
 
-      if (error) throw new Error(error.message);
+  const nombre   = (formData.get("nombre")   as string)?.trim();
+  const apellido = (formData.get("apellido") as string)?.trim();
+  const telefono = (formData.get("telefono") as string)?.trim() || null;
 
-      revalidatePath('/admin');
-   }
+  if (!nombre || !apellido) {
+    return { type: "error", text: "Nombre y apellidos son obligatorios." };
+  }
 
-   export async function actualizarRolUsuarioAction(userId: string, newRole: 'comprador' | 'vendedor' | 'admin') {
-      const supabase = await createClient();
-      const { error } = await supabase
-         .from('perfiles')
-         .update({ tipo: newRole })
-         .eq('id', userId);
+  if (telefono && !/^[0-9]{10}$/.test(telefono)) {
+    return { type: "error", text: "El teléfono debe tener 10 dígitos." };
+  }
 
-      if (error) throw new Error(error.message);
+  const { error } = await supabase
+    .from("perfiles")
+    .update({ nombre, apellido, telefono })
+    .eq("id", user.id);
 
-      revalidatePath('/admin');
-   }
+  if (error) return { type: "error", text: "No se pudieron guardar los cambios." };
 
-   export async function verificarEmailUsuarioAction(userId: string) {
-      const supabaseAdmin = (await import('@/utils/supabase/admin')).createAdminClient();
-      const { error } = await supabaseAdmin.auth.admin.updateUserById(userId, {
-         email_confirm: true
-      });
+  revalidatePath("/perfil");
+  return { type: "success", text: "Datos actualizados correctamente." };
+}
 
-      if (error) throw new Error(error.message);
+export async function uploadComprobante(
+  formData: FormData
+): Promise<{ type: "success" | "error"; text: string }> {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
-      revalidatePath('/admin');
-   }
+  if (!user) return { type: "error", text: "No hay sesión activa." };
 
-   export async function validarVendedorAction(userId: string, status: boolean) {
-      const supabase = await createClient();
-      const { error } = await supabase
-         .from('perfiles')
-         .update({ verificado: status })
-         .eq('id', userId);
+  const documento = formData.get("documento") as File | null;
 
-      if (error) throw new Error(error.message);
+  if (!documento || documento.size === 0) {
+    return { type: "error", text: "Selecciona un archivo antes de enviar." };
+  }
 
-      revalidatePath('/admin');
-   }
+  const fileExt = documento.name.split(".").pop();
+  const fileName = `${user.id}-${Date.now()}.${fileExt}`;
+  const filePath = `comprobantes/${fileName}`;
 
-   export async function actualizarPerfilAdminAction(userId: string, data: { nombre: string, apellido: string, telefono: string }) {
-      const supabase = await createClient();
-      const { error } = await supabase
-         .from('perfiles')
-         .update({
-            nombre: data.nombre,
-            apellido: data.apellido,
-            telefono: data.telefono || null
-         })
-         .eq('id', userId);
+  const { error: uploadError } = await supabase.storage
+    .from("documentos")
+    .upload(filePath, documento, { upsert: true });
 
-      if (error) throw new Error(error.message);
-   }
+  if (uploadError) {
+    return { type: "error", text: "Error al subir el archivo. Intenta de nuevo." };
+  }
+
+  const { data: { publicUrl } } = supabase.storage
+    .from("documentos")
+    .getPublicUrl(filePath);
+
+  const { error: updateError } = await supabase
+    .from("perfiles")
+    .update({ url_comprobante: publicUrl })
+    .eq("id", user.id);
+
+  if (updateError) {
+    return { type: "error", text: "Archivo subido pero no se pudo guardar el enlace." };
+  }
+
+  revalidatePath("/perfil");
+  return { type: "success", text: "Comprobante enviado. El equipo revisará tu solicitud." };
+}
+
+// --- ACCIONES DE ADMINISTRADOR ---
+
+export async function eliminarUsuarioAdminAction(userId: string) {
+   const supabaseAdmin = (await import('@/utils/supabase/admin')).createAdminClient();
+   const { error } = await supabaseAdmin.auth.admin.deleteUser(userId);
+   if (error) throw new Error(error.message);
+   revalidatePath('/admin');
+}
+
+export async function actualizarRolUsuarioAction(userId: string, newRole: 'comprador' | 'vendedor' | 'admin') {
+   const supabase = await createClient();
+   const { error } = await supabase
+      .from('perfiles')
+      .update({ tipo: newRole })
+      .eq('id', userId);
+   if (error) throw new Error(error.message);
+   revalidatePath('/admin');
+}
+
+export async function verificarEmailUsuarioAction(userId: string) {
+   const supabaseAdmin = (await import('@/utils/supabase/admin')).createAdminClient();
+   const { error } = await supabaseAdmin.auth.admin.updateUserById(userId, {
+      email_confirm: true
+   });
+   if (error) throw new Error(error.message);
+   revalidatePath('/admin');
+}
+
+export async function validarVendedorAction(userId: string, status: boolean) {
+   const supabase = await createClient();
+   const { error } = await supabase
+      .from('perfiles')
+      .update({ verificado: status })
+      .eq('id', userId);
+   if (error) throw new Error(error.message);
+   revalidatePath('/admin');
+}
+
+export async function actualizarPerfilAdminAction(userId: string, data: { nombre: string, apellido: string, telefono: string }) {
+   const supabase = await createClient();
+   const { error } = await supabase
+      .from('perfiles')
+      .update({
+         nombre: data.nombre,
+         apellido: data.apellido,
+         telefono: data.telefono || null
+      })
+      .eq('id', userId);
+   if (error) throw new Error(error.message);
+}
