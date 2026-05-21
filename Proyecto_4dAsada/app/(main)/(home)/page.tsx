@@ -2,7 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import InicioHero from "./components/InicioHero";
 import InicioBody from "./components/InicioBody";
 import BienvenidaSection from "@/app/components/BienvenidaSection";
-import { ProductCardProps } from "../components/ui/ProductCard";
+import { ProductCardProps } from "../../components/ui/ProductCard";
 
 type ProductoRow = {
   id: number;

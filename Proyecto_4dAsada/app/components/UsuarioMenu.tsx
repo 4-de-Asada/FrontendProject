@@ -94,6 +94,14 @@ export default function UsuarioMenu({ user: usuario, profile: perfil }: UsuarioM
               >
                 Mi Perfil
               </Link>
+
+              <Link 
+                href="/reportes" 
+                className={styles.menuItem}
+                onClick={() => setEstaAbierto(false)}
+              >
+                Reportar un Problema
+              </Link>
               
               <button 
                 onClick={manejarCerrarSesionClick} 

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import ProductGrid from "../components/ui/ProductGrid";
+import ProductGrid from "../../components/ui/ProductGrid";
 import MarketplaceHero, { SortOption } from "./MarketplaceHero";
-import { ProductCardProps } from "../components/ui/ProductCard";
+import { ProductCardProps } from "../../components/ui/ProductCard";
 
 interface MarketplaceClientProps {
   products: ProductCardProps[];

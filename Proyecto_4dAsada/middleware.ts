@@ -35,7 +35,29 @@ export async function middleware(request: NextRequest) {
   try {
     const { data: { user } } = await supabase.auth.getUser()
 
-    if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
+    if (user) {
+      // 1. Verificar si el usuario está baneado
+      const { data: perfil } = await supabase
+        .from('perfiles')
+        .select('baneado_permanente, baneado_hasta')
+        .eq('id', user.id)
+        .single()
+
+      if (perfil) {
+        const ahora = new Date()
+        const esBaneoPermanente = perfil.baneado_permanente
+        const esBaneoTemporal = perfil.baneado_hasta && new Date(perfil.baneado_hasta) > ahora
+
+        if ((esBaneoPermanente || esBaneoTemporal) && request.nextUrl.pathname !== '/baneado') {
+          return NextResponse.redirect(new URL('/baneado', request.url))
+        }
+      }
+
+      // 2. Redirección dashboard (existente)
+      if (request.nextUrl.pathname.startsWith('/dashboard')) {
+        return response
+      }
+    } else if (request.nextUrl.pathname.startsWith('/dashboard')) {
       return NextResponse.redirect(new URL('/ingreso', request.url))
     }
   } catch {
@@ -46,5 +68,14 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*'],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public (public assets)
+     */
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+  ],
 }

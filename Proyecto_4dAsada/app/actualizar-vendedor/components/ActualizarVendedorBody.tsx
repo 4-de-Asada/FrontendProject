@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
-import { uploadComprobante } from "../../(auth)/actions";
+import { uploadComprobante } from "../../(auth)/AutenticacionActions";
 import styles from "./ActualizarVendedorBody.module.css";
 
 interface Props {

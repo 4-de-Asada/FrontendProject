@@ -4,7 +4,7 @@ import AcatiaguisHero from "./components/AcatiaguisHero";
 import AcatiaguisInfoBar from "./components/AcatiaguisInfoBar";
 import AcatiaguisBody from "./components/AcatiaguisBody";
 import AcatiaguisCTAButton from "./components/AcatiaguisCTAButton";
-import { ProductCardProps } from "../components/ui/ProductCard";
+import { ProductCardProps } from "../../components/ui/ProductCard";
 
 type ProductoRow = {
   id: number;
