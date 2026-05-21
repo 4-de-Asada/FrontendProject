@@ -15,11 +15,11 @@
 .bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?w=1400&q=60');
+  background-image: url('https://th.bing.com/th/id/R.1bd82b782f7b5824755c2c2c667e3e38?rik=S3VUdBawb9Kd%2fA&pid=ImgRaw&r=0');
   background-size: cover;
   background-position: center;
   filter: blur(2px) brightness(0.35);
-  transform: scale(1.05); /* evita bordes blancos del blur */
+  transform: scale(1.2); /* evita bordes blancos del blur */
 }
 
 /* Contenido centrado sobre el fondo */

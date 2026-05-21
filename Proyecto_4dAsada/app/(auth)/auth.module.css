@@ -2,7 +2,7 @@
 
 .container {
   min-height: 100vh;
-  background-color: #041E3A;
+  background: linear-gradient(135deg, #00093c 0%, #1a0600 100%);
   /* background-color: #caee48; */
   display: flex;
   flex-direction: column;
@@ -68,6 +68,7 @@
 }
 
 .logoText {
+  border-radius: 10px;
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
@@ -169,13 +170,14 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: #ffffff;
-  background-color: #041E3A;
+  color: #00093c;
+  background-color: #e4ac2e;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .buttonPrimary:hover {
+  color: #ffffff;
   background-color: #1e3a8a; /* Equivalente a blue-900 */
 }
 
@@ -186,7 +188,7 @@
 
 .link {
   font-weight: 500;
-  color: #041E3A;
+  color: #e4ac2e;
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -197,7 +199,7 @@
 
 .linkBold {
   font-weight: 700;
-  color: #041E3A;
+  color: #e4ac2e;
   text-decoration: none;
 }
 

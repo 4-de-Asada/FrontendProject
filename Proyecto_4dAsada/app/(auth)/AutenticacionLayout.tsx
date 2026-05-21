@@ -17,7 +17,11 @@ export default function AutenticacionLayout({ children, subtitle }: Autenticacio
       <div className={styles.header}>
         <Link href={"/"} className={styles.backHome}>
           <div className={styles.logoCircle}>
-            <span className={styles.logoText}>G</span>
+            <img 
+            className={styles.logoText}
+            src="/Icono.jpeg"
+            alt="GarraDeal"
+            />
           </div>
           <h2 className={styles.title}>Garra Deal</h2>
         </Link>        

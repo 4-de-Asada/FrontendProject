@@ -26,7 +26,7 @@ export default async function Navbar() {
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
           <div className="relative w-8 h-8 rounded-full overflow-hidden ring-2 ring-[#1a2b5e]/20 bg-[#1a2b5e]">
             <Image
-              src="https://images.unsplash.com/photo-1580537659466-0a9bfa916a54?w=64&q=80"
+              src="/Icono.jpeg"
               alt="UNAM campus"
               fill
               className="object-cover"

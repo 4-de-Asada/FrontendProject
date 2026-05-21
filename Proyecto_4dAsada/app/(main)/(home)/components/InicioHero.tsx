@@ -22,7 +22,7 @@ export default async function InicioHero() {
     <section className={styles.hero}>
       {/* Imagen de fondo con overlay */}
       <div className={styles.bg} aria-hidden="true" />
-
+        
       <div className={styles.content}>
         {/* Título */}
         <h1 className={styles.title}>
