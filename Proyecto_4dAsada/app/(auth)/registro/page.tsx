@@ -25,7 +25,7 @@ export default async function RegistroPage(
 				</div>
 			)}
 
-			<RegistroForm singupAction={registrarUsuarioAction} />
+			{/* <RegistroForm singupAction={registrarUsuarioAction} /> */}
 
 			{/* Enlace al Login */}
 			<div className={styles.footerText}>
