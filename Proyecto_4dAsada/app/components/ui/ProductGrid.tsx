@@ -4,7 +4,7 @@
 import { useState } from "react";
 import ProductCard, { ProductCardProps } from "./ProductCard";
 import ProductModal from "./ProductModal";
-import { SortOption } from "../../marketplace/MarketplaceHero";
+import { SortOption } from "@/app/(main)/marketplace/MarketplaceHero";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 

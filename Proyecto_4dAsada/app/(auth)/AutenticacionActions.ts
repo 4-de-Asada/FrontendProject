@@ -92,6 +92,7 @@ export async function registrarUsuarioAction(formData: FormData) {
                id: datosAutenticacion.user.id,
                nombre,
                apellido: apellidos,
+               num_cuenta: numeroCuenta,
                telefono: telefono || null,
                tipo: esVendedor ? 'vendedor' : 'comprador',
                url_comprobante: urlComprobante,

@@ -1,6 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import MarketplaceClient from "./MarketplaceClient";
-import { ProductCardProps } from "../components/ui/ProductCard";
+import { ProductCardProps } from "../../components/ui/ProductCard";
 
 type ProductoRow = {
   id: number;
