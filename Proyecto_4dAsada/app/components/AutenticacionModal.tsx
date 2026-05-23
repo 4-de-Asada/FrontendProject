@@ -42,7 +42,7 @@ export default function AutenticacionModal({ isOpen, onClose, type }: Autenticac
                 Tu cuenta actual es de comprador. Para publicar productos, debes completar tu perfil de vendedor con tu teléfono y comprobante.
               </p>
               <div className={styles.actions}>
-                <Link href="/actualizar-vendedor" className={styles.btnPrimary} onClick={onClose}>
+                <Link href="/solicitarVendedor" className={styles.btnPrimary} onClick={onClose}>
                   Convertirme en Vendedor
                 </Link>
                 <button className={styles.btnSecondary} onClick={onClose}>
