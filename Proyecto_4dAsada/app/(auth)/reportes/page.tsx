@@ -5,7 +5,7 @@ export default async function ReportesPage() {
   return (
     <>
       <Navbar />
-      <main style={{ backgroundColor: '#f8fafc', minHeight: 'calc(100vh - 3.5rem)', padding: '2rem 0' }}>
+      <main style={{ background: 'linear-gradient(135deg, #00093c 0%, #1a0600 100%)', minHeight: 'calc(100vh - 3.5rem)', padding: '2rem 0' }}>
         <ReportesForm />
       </main>
     </>

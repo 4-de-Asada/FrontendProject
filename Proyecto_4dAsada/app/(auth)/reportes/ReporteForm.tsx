@@ -67,7 +67,7 @@ export default function ReportesForm() {
       </form>
 
       <Link href="/perfil" className={styles.backLink}>
-        ← Volver a mi perfil
+        Volver a mi perfil
       </Link>
     </div>
   );

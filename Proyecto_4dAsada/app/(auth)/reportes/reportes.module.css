@@ -10,13 +10,13 @@
 .title {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #041E3A;
+  color: #000000;
   margin-bottom: 0.5rem;
   text-align: center;
 }
 
 .subtitle {
-  color: #64748b;
+  color: #000000;
   text-align: center;
   margin-bottom: 2rem;
   font-size: 0.95rem;
@@ -36,13 +36,14 @@
 
 .label {
   font-weight: 600;
-  color: #1e293b;
+  color: #142f5c;
   font-size: 0.9rem;
 }
 
 .input, .select, .textarea {
+  color: #000;
   padding: 0.75rem;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid #000000;
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.2s;
@@ -96,9 +97,10 @@
 }
 
 .backLink {
+  font-weight: 500;
   display: inline-block;
   margin-top: 1.5rem;
-  color: #64748b;
+  color: #0b1a2f;
   text-decoration: none;
   font-size: 0.9rem;
 }
