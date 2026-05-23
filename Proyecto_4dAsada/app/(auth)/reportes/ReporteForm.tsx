@@ -1,23 +1,14 @@
 "use client";
 
-import { useState, useTransition } from "react";
-import { enviarReporteAction } from "./ReportesActions";
 import styles from "./reportes.module.css";
 import Link from "next/link";
 
-export default function ReportesPage() {
-  const [msg, setMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
-  const [isPending, startTransition] = useTransition();
-
-  async function handleSubmit(formData: FormData) {
-    setMsg(null);
-    startTransition(async () => {
-      const result = await enviarReporteAction(formData);
-      setMsg(result);
-      if (result.type === "success") {
-        // Opcional: limpiar formulario o redirigir
-      }
-    });
+export default function ReportesForm() {
+  // Se quitó la lógica de conexión para mostrar solo la interfaz
+  
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    alert("Funcionalidad de reporte desactivada temporalmente.");
   }
 
   return (
@@ -27,13 +18,7 @@ export default function ReportesPage() {
         Ayúdanos a mantener la comunidad segura reportando conductas inapropiadas o estafas.
       </p>
 
-      {msg && (
-        <div className={`${styles.alert} ${msg.type === "success" ? styles.alertSuccess : styles.alertError}`}>
-          {msg.text}
-        </div>
-      )}
-
-      <form action={handleSubmit} className={styles.form}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.field}>
           <label htmlFor="numCuenta" className={styles.label}>
             Número de Cuenta del Vendedor
@@ -76,8 +61,8 @@ export default function ReportesPage() {
           />
         </div>
 
-        <button type="submit" disabled={isPending} className={styles.btnSubmit}>
-          {isPending ? "Enviando reporte..." : "Enviar Reporte"}
+        <button type="submit" className={styles.btnSubmit}>
+          Enviar Reporte
         </button>
       </form>
 
