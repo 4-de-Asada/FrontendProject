@@ -1,118 +1,125 @@
 .pageWrapper {
   min-height: 100vh;
   width: 100%;
-  background-color: #063a5d;
+  background: linear-gradient(135deg, #00093c 25%, #1a0600 75%);
   display: flex;             
   justify-content: center;   
-  align-items: center;       
+  align-items: flex-start;    
   padding: 2rem;             
+  font-family: 'Poppins', sans-serif;
 }
 
 .container {
   width: 100%;               
   max-width: 1000px;         
-  padding: 3rem 1.5rem;
-  /* background-color: #f9fafb; */
-  border-radius: 2rem;
+  padding: 1rem 0;
   position: relative;
-  overflow: hidden;
   z-index: 1;
-}
-
-/* 1. EL FOCO DE LUZ GIRATORIO (El fondo) */
-.container::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 160%; 
-  height: 160%;
-  background: conic-gradient(from 0deg, transparent 10%, #8d0f89 100%);
-  z-index: -2;
-  animation: spin 10s linear infinite;
-}
-
-/* 2. LA TARJETA SÓLIDA ENCIMA (La máscara) */
-.container::after {
-  content: "";
-  position: absolute;
-  inset: 0.8rem; 
-  background-color: #fafbf9; 
-  border-radius: calc(2rem + 20px); 
-  z-index: -1; 
-}
-
-/* 3. EL MOTOR QUE GIRA LA LUZ */
-@keyframes spin {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
- 100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .topActions {
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
  
+
 .btnHome {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: #1a2b5e;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #C49A45; 
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  background-color: #e3e3e3;
-  border-radius: 0.5rem;
+  padding: 0.5rem 0;
+  background-color: transparent;
   transition: all 0.2s;
 }
 
 .btnHome:hover {
-  background-color: #97add8;
+  color: #f0c14b;
   transform: translateX(-4px);
 }
 
 .header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  margin-bottom: 3rem;
-  background-color: #eaeaea;
-  padding: 2rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 6px -1px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+  padding: 0; 
 }
 
 .avatar {
-  width: 6rem;
-  height: 6rem;
-  border-radius: 2rem;
+  width: 7.5rem; 
+  height: 7.5rem;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #ffffff;
-  text-transform: uppercase;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  
+  position: relative;
+  overflow: hidden;
+  background: transparent; 
 }
 
-.avatarAdmin { background-color: #092048; border: 4px solid #36007e; box-shadow: 0 0 15px rgba(250, 204, 21, 0.4); }
-.avatarSeller { background-color: #5b21b6; border: 4px solid #a78bfa; }
-.avatarBuyer { background-color: #1e3a8a; border: 4px solid #60a5fa; }
+.avatar::before {
+  content: '';
+  position: absolute;
+
+  width: 150%; 
+  height: 150%;
+
+  background-image: conic-gradient(
+    #C49A45 0deg,
+    transparent 120deg 
+  );
+
+  animation: spinBorder 3s linear infinite;
+  z-index: 1;
+}
+
+.avatar::after {
+  content: '';
+  position: absolute;
+
+  inset: 4px; 
+  border-radius: 50%;
+  background-color: #041E3A; 
+  z-index: 2;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+@keyframes spinBorder {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .headerInfo {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.75rem;
 }
 
 .name {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 800;
-  color: #1a2b5e;
+  color: #ffffff; 
   margin: 0;
   line-height: 1.1;
+  letter-spacing: -0.5px;
 }
 
 .roleBadge {
@@ -121,34 +128,20 @@
   gap: 0.5rem;
   padding: 0.4rem 1rem;
   border-radius: 9999px;
-  font-size: 0.7rem;
-  font-weight: 800;
+  font-size: 0.75rem;
+  font-weight: 700;
   letter-spacing: 0.025em;
   width: fit-content;
   text-transform: uppercase;
 }
 
-.badgePuma {
-  background-color: #fef9c3;
-  color: #854d0e;
-  border: 1px solid #fde047;
-}
-
-.badgeContribuyente {
-  background-color: #f5f3ff;
-  color: #5b21b6;
-  border: 1px solid #ddd6fe;
-}
-
-.badgeAdmin {
-  background-color: #274578;
-  color: #facc15;
-  border: 1px solid #0e0048;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+.badgePuma { background-color: #C49A45; color: #041E3A; border: none; }
+.badgeContribuyente { background-color: transparent; color: #C49A45; border: 1px solid #C49A45; }
+.badgeAdmin { background-color: #b91c1c; color: #ffffff; border: none; }
 
 .tagContainer {
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
@@ -160,34 +153,32 @@
   font-weight: 700;
 }
 
-.tagTianguis { background-color: #dcfce7; color: #166534; }
-.tagMarket { background-color: #dbeafe; color: #1e40af; }
-.tagServicios { background-color: #ffedd5; color: #9a3412; }
+.tagTianguis { background-color: rgba(220, 252, 231, 0.9); color: #166534; }
+.tagMarket { background-color: rgba(219, 234, 254, 0.9); color: #1e40af; }
+.tagServicios { background-color: rgba(255, 237, 213, 0.9); color: #9a3412; }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
 }
 
 .card {
   background-color: #ffffff;
-  padding: 1.75rem;
-  border-radius: 1.25rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #f3f4f6;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
   display: flex;
   flex-direction: column;
-  /* max-width: 400px; */
 }
 
 .cardTitle {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  color: #1a2b5e;
+  color: #041E3A;
   margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 3px solid #e5e7eb;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #f3f4f6;
 }
 
 .infoList {
@@ -202,8 +193,8 @@
 }
 
 .infoLabel {
-  font-size: 0.7rem;
-  color: #9ca3af;
+  font-size: 0.75rem;
+  color: #6b7280;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -211,21 +202,21 @@
 
 .infoValue {
   font-size: 1rem;
-  color: #1f2937;
+  color: #111827;
   font-weight: 600;
+  margin-top: 0.25rem;
 }
 
 .status {
   font-weight: 800;
   font-size: 0.85rem;
-  padding: 0.2rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 0.4rem;
 }
 
-.verified { background-color: #f0fdf4; color: #166534; }
-.pending { background-color: #fffbeb; color: #92400e; }
-.rejected { background-color: #fef2f2; color: #991b1b; }
-.neutral { background-color: #f9fafb; color: #4b5563; }
+.verified { background-color: #dcfce3; color: #15803d; }
+.pending { background-color: #fef08a; color: #854d0e; }
+.rejected { background-color: #fee2e2; color: #b91c1c; }
 
 .statusWrapper {
   display: flex;
@@ -257,22 +248,22 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 1.25rem 0.75rem;
-  background-color: #f8fafc;
-  border-radius: 1rem;
-  border: 1px solid #f1f5f9;
+  padding: 1.25rem 0.5rem;
+  background-color: #F8F6F0; 
+  border-radius: 0.75rem;
+  border: 1px solid #E5E0D5;
 }
 
 .statValue {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 900;
-  color: #1a2b5e;
+  color: #041E3A;
   line-height: 1;
 }
 
 .statLabel {
-  font-size: 0.75rem;
-  color: #64748b;
+  font-size: 0.7rem;
+  color: #4b5563;
   font-weight: 700;
   margin-top: 0.5rem;
   text-transform: uppercase;
@@ -280,8 +271,8 @@
 
 .scoreContainer {
   margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px dashed #e2e8f0;
+  padding-top: 1.25rem;
+  border-top: 1px dashed #d1d5db;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -289,15 +280,15 @@
 }
 
 .scoreValue {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 800;
-  color: #c49a45;
+  color: #C49A45;
 }
 
 .scoreLabel {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #94a3b8;
+  color: #6b7280;
 }
 
 .ctaBox {
@@ -308,7 +299,7 @@
   gap: 1rem;
   padding: 2rem 1rem;
   background-color: #fdfaf3;
-  border: 2px dashed #fcd34d;
+  border: 2px dashed #C49A45;
   border-radius: 1rem;
   text-align: center;
 }
@@ -316,27 +307,27 @@
 .ctaText {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #92400e;
+  color: #041E3A;
 }
 
 .btnCTA {
-  padding: 0.5rem 1rem;
-  background-color: #f59e0b;
-  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  background-color: #C49A45;
+  color: #041E3A;
   border-radius: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.2s;
 }
 
 .btnCTA:hover {
-  background-color: #d97706;
+  background-color: #f0c14b;
   transform: scale(1.05);
 }
 
 .actions {
-  margin-top: 4rem;
+  margin-top: 3rem;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
@@ -344,59 +335,68 @@
 }
 
 .btnEdit {
-  padding: 0.8rem 2rem;
-  background-color: #f3f4f6;
-  color: #374151;
-  border-radius: 0.75rem;
+  padding: 0.8rem 2.5rem;
+  background-color: transparent;
+  color: #C49A45; 
+  border-radius: 0.5rem;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.2s;
-  border: 1px solid #e5e7eb;
+  border: 2px solid #C49A45; 
 }
 
 .btnEdit:hover {
-  background-color: #e5e7eb;
+  background-color: #C49A45;
+  color: #041E3A;
   transform: translateY(-2px);
 }
 
 .btnPromote {
-  padding: 0.8rem 2rem;
-  background: linear-gradient(135deg, #1a2b5e 0%, #063a5d 100%);
-  color: #ffffff;
-  border-radius: 0.75rem;
+  padding: 0.8rem 2.5rem;
+  background-color: #C49A45;
+  color: #041E3A;
+  border: none;
+  border-radius: 0.5rem;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.2s;
-  box-shadow: 0 4px 6px -1px rgba(26, 43, 94, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
 }
 
 .btnPromote:hover {
-  background: linear-gradient(135deg, #243b8a 0%, #1a2b5e 100%);
+  background-color: #f0c14b;
   transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(26, 43, 94, 0.3);
 }
 
 .btnDegrade {
   padding: 0.8rem 2rem;
-  background-color: #fef2f2;
-  color: #991b1b;
-  border: 1px solid #fee2e2;
-  border-radius: 0.75rem;
+  background-color: rgba(220, 38, 38, 0.1);
+  color: #ef4444;
+  border: 1px solid #ef4444;
+  border-radius: 0.5rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .btnDegrade:hover {
-  background-color: #fee2e2;
+  background-color: #ef4444;
+  color: white;
   transform: translateY(-2px);
 }
 
 @media (max-width: 640px) {
   .header {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .avatar {
+    width: 6rem;
+    height: 6rem;
+    font-size: 2rem;
+  }
+  
+  .name {
+    font-size: 1.75rem;
   }
 }
-
